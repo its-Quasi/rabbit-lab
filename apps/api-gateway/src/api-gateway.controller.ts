@@ -18,7 +18,7 @@ export class ApiGatewayController {
 
   @Post('orders')
   createOrder(@Body() order: any) {
-    this.client.emit('order_created', order);
+    this.client.emit('order_created', order); // Emit the order_created event to RabbitMQ and send payload
     return { code: 201, message: 'Order created successfully', order };
   }
 }
